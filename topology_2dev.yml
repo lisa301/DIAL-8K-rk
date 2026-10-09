@@ -1,0 +1,5 @@
+worker0:
+  host: "192.168.2.88:10128"
+  description: "2dv"
+  layers:
+    - "model.language_model.layers.4-35"

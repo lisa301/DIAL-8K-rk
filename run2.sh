@@ -1,11 +1,13 @@
-export DIAL_TEXT_DECODE_PAST_BUCKETS=128,256,512,1024
-
-/home/firefly/Documents/Dial_llama/target/release/dial-cli \
+#!/bin/bash
+export SPM_TRANSFER_LIMIT_MBPS=1
+export RUST_LOG=info
+export QWEN3VL_VISION_CACHE=1
+# 2. 
+./target/release/dial-cli \
   --mode master \
   --api 0.0.0.0:8082 \
-  --model /home/firefly/Documents/Qwen3-VL-8B-Instruct \
-  --text-rknn-dir /home/firefly/Documents/Dial_llama/transmodel/transmodel2 \
-  --text-rknn-prefill \
-  --text-decode-mode npu-gpu \
+  --cpu \
+  --text-decode-mode cpu-only \
+  --text-mlp-rknn-dir /home/firefly/Documents/Dial_llama/transmodel/mlp_down_rknn_l00_l03 \
   --vision-rknn /home/firefly/Documents/Dial_llama/qwen3_vl_8b_vision_448_deepstack_fp16.rknn \
   --vision-fixed-side 448
